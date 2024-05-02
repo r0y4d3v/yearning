@@ -74,15 +74,15 @@ func focalPoint(c yee.Context) bool {
 }
 
 func AddRouter(e *yee.Core) {
-	e.POST("/login", login.UserGeneralLogin)
-	e.POST("/register", login.UserRegister)
-	e.GET("/fetch", login.UserReqSwitch)
-	e.GET("/lang", login.SystemLang)
-	e.POST("/ldap", login.UserLdapLogin)
-	e.GET("/oidc/_token-login", login.OidcLogin)
-	e.GET("/oidc/state", login.OidcState)
+	e.POST("/yearning/login", login.UserGeneralLogin)
+	e.POST("/yearning/register", login.UserRegister)
+	e.GET("/yearning/fetch", login.UserReqSwitch)
+	e.GET("/yearning/lang", login.SystemLang)
+	e.POST("/yearning/ldap", login.UserLdapLogin)
+	e.GET("/yearning/oidc/_token-login", login.OidcLogin)
+	e.GET("/yearning/oidc/state", login.OidcState)
 
-	r := e.Group("/api/v2", middleware.JWTWithConfig(middleware.JwtConfig{SigningKey: []byte(model.JWT)}))
+	r := e.Group("/yearning/api/v2", middleware.JWTWithConfig(middleware.JwtConfig{SigningKey: []byte(model.JWT)}))
 	r.Restful("/common/:tp", personal.PersonalRestFulAPis())
 	r.Restful("/dash/:tp", apis.YearningDashApis())
 	r.Restful("/fetch/:tp", apis.YearningFetchApis())

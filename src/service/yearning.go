@@ -44,7 +44,7 @@ func StartYearning(port string) {
 	go cronTabTotalTickets()
 	loadDBInit()
 	e := yee.New()
-	e.Pack("/front", f, "dist")
+	e.Pack("/yearning-ui", f, "dist")
 	e.Use(middleware.Cors())
 	e.Use(middleware.Logger())
 	e.Use(middleware.Secure())
@@ -53,7 +53,7 @@ func StartYearning(port string) {
 		Level: 9,
 	}))
 	e.SetLogLevel(model.TransferLogLevel())
-	e.GET("/", func(c yee.Context) error {
+	e.GET("/yearning", func(c yee.Context) error {
 		return c.HTML(http.StatusOK, html)
 	})
 	router.AddRouter(e)
