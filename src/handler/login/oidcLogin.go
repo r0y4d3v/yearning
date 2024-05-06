@@ -123,7 +123,7 @@ func OidcLogin(c yee.Context) (err error) {
 	}
 
 	return c.Redirect(302, fmt.Sprintf(
-		"/#/login?oidcLogin=1&token=%s&user=%s&real_name=%s&is_record=%d",
+		"/yearning#/login?oidcLogin=1&token=%s&user=%s&real_name=%s&is_record=%d",
 		token, account.Username, account.RealName, account.IsRecorder),
 	)
 }
