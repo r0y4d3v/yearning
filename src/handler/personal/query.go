@@ -154,7 +154,6 @@ func SocketQueryResults(c yee.Context) (err error) {
 			c.Logger().Criticalf(i18n.DefaultLang.Load(i18n.ER_USER_NO_PERMISSION), user, args.SourceId)
 			return
 		}
-
 		if token.Valid {
 			msg := new(QueryDeal)
 			core := new(queryCore)
